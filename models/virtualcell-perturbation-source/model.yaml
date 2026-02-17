@@ -1,0 +1,8 @@
+schema_version: "2.0"
+title: "VirtualCell: PerturbationSource"
+description: "Emits gene perturbation signals (knockout, overexpression, drug) on a configurable schedule."
+standard: other
+tags: [virtual-cell, perturbation, input]
+authors: ["Biosimulant Team"]
+bsim:
+  entrypoint: "src.perturbation_source:PerturbationSource"

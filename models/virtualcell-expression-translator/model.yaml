@@ -1,0 +1,8 @@
+schema_version: "2.0"
+title: "VirtualCell: ExpressionTranslator"
+description: "Translates gene expression fold-changes into biophysical current signals for neuron models."
+standard: other
+tags: [virtual-cell, bridge, neuroscience]
+authors: ["Biosimulant Team"]
+bsim:
+  entrypoint: "src.expression_translator:ExpressionTranslator"

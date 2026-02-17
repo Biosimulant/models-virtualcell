@@ -1,0 +1,26 @@
+This repository is dual-licensed.
+
+1) Code license (Apache-2.0)
+Files that are primarily source code are licensed under the Apache License 2.0.
+See: LICENSE-CODE.txt
+
+Examples (non-exhaustive):
+- scripts/**
+- libs/**
+- templates/**
+- models/**/src/**
+- models/**/tests/**
+
+2) Content license (CC BY 4.0)
+Model manifests, wiring specs, documentation, and other non-code content are
+licensed under Creative Commons Attribution 4.0 International.
+See: LICENSE-CONTENT.txt
+
+Examples (non-exhaustive):
+- models/**/model.yaml
+- spaces/**/space.yaml
+- docs/**
+- README.md
+
+Attribution requirements and guidance:
+See: ATTRIBUTION.md

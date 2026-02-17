@@ -1,0 +1,16 @@
+schema_version: "2.0"
+title: "VirtualCell: ArcStatePredictor"
+description: "Arc Institute State Transition ML model predicting transcriptional responses to perturbations."
+standard: other
+tags: [virtual-cell, gene-regulation, transcriptomics, arc-institute, ml]
+authors: ["Biosimulant Team"]
+bsim:
+  entrypoint: "src.virtual_cell:VirtualCell"
+runtime:
+  dependencies:
+    required:
+      - arc-state>=0.10.0
+      - torch>=2.7.0
+      - anndata>=0.11.0
+      - scanpy>=1.11.0
+      - huggingface_hub>=0.20.0

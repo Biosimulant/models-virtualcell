@@ -1,0 +1,8 @@
+schema_version: "2.0"
+title: "VirtualCell: ExpressionMonitor"
+description: "Monitors and visualizes gene expression profiles as bar charts and timeseries."
+standard: other
+tags: [virtual-cell, monitor, visualization]
+authors: ["Biosimulant Team"]
+bsim:
+  entrypoint: "src.expression_monitor:ExpressionMonitor"
