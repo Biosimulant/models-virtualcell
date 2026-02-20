@@ -21,6 +21,6 @@ def _paths():
 
 
 @pytest.fixture(scope="session")
-def bsim(_paths):
-    import bsim as _bsim
+def biosim(_paths):
+    import biosim as _bsim
     return _bsim

@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 
-def test_instantiation(bsim):
+def test_instantiation(biosim):
     from src.perturbation_source import PerturbationSource
 
     module = PerturbationSource()
@@ -12,7 +12,7 @@ def test_instantiation(bsim):
     assert len(module.outputs()) > 0
 
 
-def test_advance_produces_outputs(bsim):
+def test_advance_produces_outputs(biosim):
     from src.perturbation_source import PerturbationSource
 
     module = PerturbationSource(min_dt=0.01)
@@ -25,7 +25,7 @@ def test_advance_produces_outputs(bsim):
         assert signal.time == 0.01
 
 
-def test_output_keys_match(bsim):
+def test_output_keys_match(biosim):
     from src.perturbation_source import PerturbationSource
 
     module = PerturbationSource(min_dt=0.01)
@@ -33,7 +33,7 @@ def test_output_keys_match(bsim):
     assert set(module.get_outputs().keys()) == module.outputs()
 
 
-def test_reset(bsim):
+def test_reset(biosim):
     from src.perturbation_source import PerturbationSource
 
     module = PerturbationSource(min_dt=0.01)
@@ -46,7 +46,7 @@ def test_reset(bsim):
     assert outputs["perturbation"].time == 0.01
 
 
-def test_perturbation_inactive_before_apply_at(bsim):
+def test_perturbation_inactive_before_apply_at(biosim):
     from src.perturbation_source import PerturbationSource
 
     module = PerturbationSource(gene="SCN1A", apply_at=0.5, min_dt=0.01)
@@ -56,7 +56,7 @@ def test_perturbation_inactive_before_apply_at(bsim):
     assert pert["gene"] == ""
 
 
-def test_perturbation_active_after_apply_at(bsim):
+def test_perturbation_active_after_apply_at(biosim):
     from src.perturbation_source import PerturbationSource
 
     module = PerturbationSource(
@@ -71,7 +71,7 @@ def test_perturbation_active_after_apply_at(bsim):
     assert pert["magnitude"] == 2.0
 
 
-def test_schedule_overrides_single(bsim):
+def test_schedule_overrides_single(biosim):
     from src.perturbation_source import PerturbationSource
 
     module = PerturbationSource(
@@ -95,7 +95,7 @@ def test_schedule_overrides_single(bsim):
     assert pert["type"] == "drug"
 
 
-def test_schedule_inactive_outside_windows(bsim):
+def test_schedule_inactive_outside_windows(biosim):
     from src.perturbation_source import PerturbationSource
 
     module = PerturbationSource(

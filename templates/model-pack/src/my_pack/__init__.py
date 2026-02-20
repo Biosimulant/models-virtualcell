@@ -1,6 +1,6 @@
-"""My custom bsim pack.
+"""My custom biosim pack.
 
-This pack provides custom modules for bsim simulations.
+This pack provides custom modules for biosim simulations.
 
 Usage in YAML configs:
     modules:

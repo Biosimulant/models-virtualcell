@@ -1,6 +1,6 @@
 # models
 
-Public curated monorepo of biological simulation model packs and composed spaces for the **bsim** platform. Models are modular, composable components that can be wired together into full simulation scenarios without writing code — just YAML.
+Public curated monorepo of biological simulation model packs and composed spaces for the **biosim** platform. Models are modular, composable components that can be wired together into full simulation scenarios without writing code — just YAML.
 
 ## What's Inside
 
@@ -73,7 +73,7 @@ models/
 
 ### Model Interface
 
-Every model implements the `bsim.BioModule` interface:
+Every model implements the `biosim.BioModule` interface:
 
 - **`inputs()`** — declares named input signals the module consumes
 - **`outputs()`** — declares named output signals the module produces
@@ -97,26 +97,26 @@ No code changes needed to recombine models into new configurations.
 
 ### Running a Space
 
-Spaces are loaded and executed by the `bsim-platform`. The platform reads `space.yaml`, instantiates models from their manifests, wires signals, and runs the simulation loop at the configured `tick_dt` timestep for the specified `duration`.
+Spaces are loaded and executed by the `biosim-platform`. The platform reads `space.yaml`, instantiates models from their manifests, wires signals, and runs the simulation loop at the configured `tick_dt` timestep for the specified `duration`.
 
 ## Getting Started
 
 ### Prerequisites
 
 - Python 3.11+
-- `bsim` framework
+- `biosim` framework
 
-### Install bsim
+### Install biosim
 
 ```bash
-pip install "bsim @ git+https://github.com/BioSimulant/bsim.git@main"
+pip install "biosim @ git+https://github.com/BioSimulant/biosim.git@main"
 ```
 
 ### Create a New Model
 
 1. Copy `templates/model-pack/` to `models/<your-model-slug>/`
 2. Edit `model.yaml` with metadata, entrypoint, and pinned dependencies
-3. Implement your module (subclass `bsim.BioModule` or use a built-in pack)
+3. Implement your module (subclass `biosim.BioModule` or use a built-in pack)
 4. Validate: `python scripts/validate_manifests.py && python scripts/check_entrypoints.py`
 
 ### Create a New Space
@@ -126,7 +126,7 @@ pip install "bsim @ git+https://github.com/BioSimulant/bsim.git@main"
 3. Define wiring between model outputs and inputs
 4. Set `runtime.duration` and `runtime.tick_dt`
 
-## Linking in bsim-platform
+## Linking in biosim-platform
 
 - Root manifests can be linked with `manifest_path=model.yaml` or `space.yaml`
 - Subdirectory manifests require explicit paths:
@@ -135,7 +135,7 @@ pip install "bsim @ git+https://github.com/BioSimulant/bsim.git@main"
 
 ## External Repos
 
-External authors can keep models in independent repositories and link them directly in `bsim-platform`. This monorepo is curated, not exclusive.
+External authors can keep models in independent repositories and link them directly in `biosim-platform`. This monorepo is curated, not exclusive.
 
 ## Validation & CI
 
@@ -153,7 +153,7 @@ The CI pipeline (`.github/workflows/ci.yml`) runs: **secret scan** → **manifes
 
 - All dependencies must use exact version pinning (`==`)
 - Model slugs use kebab-case with domain prefix (`neuro-`, `ecology-`, `virtualcell-`)
-- Custom modules must follow the `bsim.BioModule` interface
+- Custom modules must follow the `biosim.BioModule` interface
 - Pre-commit hooks enforce trailing whitespace, EOF newlines, YAML syntax, and secret detection
 - See [docs/PUBLIC_INTERNAL_BOUNDARY.md](docs/PUBLIC_INTERNAL_BOUNDARY.md) for content policy
 

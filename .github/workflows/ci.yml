@@ -32,8 +32,8 @@ jobs:
       - name: Install validation dependencies
         run: |
           pip install pyyaml
-          # Needed to import bsim entrypoints referenced by curated model manifests.
-          pip install "bsim @ git+https://github.com/BioSimulant/bsim.git@main"
+          # Needed to import biosim entrypoints referenced by curated model manifests.
+          pip install "biosim @ git+https://github.com/BioSimulant/biosim.git@main"
       - name: Validate manifest schema
         run: python scripts/validate_manifests.py
       - name: Check entrypoints
@@ -49,7 +49,7 @@ jobs:
       - name: Install validation dependencies
         run: |
           pip install pyyaml
-          pip install "bsim @ git+https://github.com/BioSimulant/bsim.git@main"
+          pip install "biosim @ git+https://github.com/BioSimulant/biosim.git@main"
       - name: Smoke run checks (sandbox-compatible image)
         run: |
           python scripts/validate_manifests.py

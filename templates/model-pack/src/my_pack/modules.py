@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import Any, Dict, List, Optional, Set
 
-from bsim import BioModule
-from bsim.signals import BioSignal, SignalMetadata
+from biosim import BioModule
+from biosim.signals import BioSignal, SignalMetadata
 
 
 class Counter(BioModule):

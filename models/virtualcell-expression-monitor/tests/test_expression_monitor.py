@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 
-def test_instantiation(bsim):
+def test_instantiation(biosim):
     from src.expression_monitor import ExpressionMonitor
 
     module = ExpressionMonitor()
@@ -12,7 +12,7 @@ def test_instantiation(bsim):
     assert len(module.outputs()) > 0
 
 
-def test_advance_produces_outputs(bsim):
+def test_advance_produces_outputs(biosim):
     from src.expression_monitor import ExpressionMonitor
 
     module = ExpressionMonitor(min_dt=0.01)
@@ -25,7 +25,7 @@ def test_advance_produces_outputs(bsim):
         assert signal.time == 0.01
 
 
-def test_output_keys_match(bsim):
+def test_output_keys_match(biosim):
     from src.expression_monitor import ExpressionMonitor
 
     module = ExpressionMonitor(min_dt=0.01)
@@ -33,9 +33,9 @@ def test_output_keys_match(bsim):
     assert set(module.get_outputs().keys()) == module.outputs()
 
 
-def test_reset(bsim):
+def test_reset(biosim):
     from src.expression_monitor import ExpressionMonitor
-    from bsim.signals import BioSignal
+    from biosim.signals import BioSignal
 
     module = ExpressionMonitor(min_dt=0.01)
 
@@ -57,9 +57,9 @@ def test_reset(bsim):
     assert module._fold_change == []
 
 
-def test_set_inputs_records_history(bsim):
+def test_set_inputs_records_history(biosim):
     from src.expression_monitor import ExpressionMonitor
-    from bsim.signals import BioSignal
+    from biosim.signals import BioSignal
 
     module = ExpressionMonitor(tracked_genes=["A"], min_dt=0.01)
 
@@ -82,9 +82,9 @@ def test_set_inputs_records_history(bsim):
     assert "B" not in module._history
 
 
-def test_expression_state_counts(bsim):
+def test_expression_state_counts(biosim):
     from src.expression_monitor import ExpressionMonitor
-    from bsim.signals import BioSignal
+    from biosim.signals import BioSignal
 
     module = ExpressionMonitor(min_dt=0.01)
 
@@ -106,9 +106,9 @@ def test_expression_state_counts(bsim):
     assert state["n_upregulated"] == 2    # C at 1.5, D at 2.0
 
 
-def test_max_points_respected(bsim):
+def test_max_points_respected(biosim):
     from src.expression_monitor import ExpressionMonitor
-    from bsim.signals import BioSignal
+    from biosim.signals import BioSignal
 
     module = ExpressionMonitor(tracked_genes=["A"], max_points=5, min_dt=0.01)
 
@@ -129,16 +129,16 @@ def test_max_points_respected(bsim):
     assert len(module._history["A"]) == 5
 
 
-def test_visualize_none_before_advance(bsim):
+def test_visualize_none_before_advance(biosim):
     from src.expression_monitor import ExpressionMonitor
 
     module = ExpressionMonitor(min_dt=0.01)
     assert module.visualize() is None
 
 
-def test_visualize_after_input(bsim):
+def test_visualize_after_input(biosim):
     from src.expression_monitor import ExpressionMonitor
-    from bsim.signals import BioSignal
+    from biosim.signals import BioSignal
 
     module = ExpressionMonitor(tracked_genes=["A"], min_dt=0.01)
 
@@ -162,10 +162,10 @@ def test_visualize_after_input(bsim):
     assert vis[1]["render"] == "timeseries"
 
 
-def test_auto_select_tracked_genes(bsim):
+def test_auto_select_tracked_genes(biosim):
     """Without explicit tracked_genes, should auto-select top deviators."""
     from src.expression_monitor import ExpressionMonitor
-    from bsim.signals import BioSignal
+    from biosim.signals import BioSignal
 
     module = ExpressionMonitor(min_dt=0.01)
 

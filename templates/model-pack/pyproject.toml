@@ -3,9 +3,9 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "bsim-my-pack"
+name = "biosim-my-pack"
 version = "0.1.0"
-description = "Custom modules for bsim simulations"
+description = "Custom modules for biosim simulations"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "Apache-2.0"
@@ -21,18 +21,18 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
 ]
 dependencies = [
-    "bsim>=0.1.0",
+    "biosim>=0.1.0",
 ]
 
 [project.optional-dependencies]
 dev = [
     "pytest>=7.0",
-    "bsim[ui]",
+    "biosim[ui]",
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourname/bsim-my-pack"
-Documentation = "https://github.com/yourname/bsim-my-pack#readme"
+Homepage = "https://github.com/yourname/biosim-my-pack"
+Documentation = "https://github.com/yourname/biosim-my-pack#readme"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/my_pack"]

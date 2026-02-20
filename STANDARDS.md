@@ -62,7 +62,7 @@ description: "<One-line feature description>"
 standard: other
 tags: [<domain>, <subdomain>, ...]      # At least one domain tag
 authors: ["Biosimulant Team"]
-bsim:
+biosim:
   entrypoint: "src.<module>:<ClassName>"
 ```
 
@@ -74,7 +74,7 @@ bsim:
 | `standard` | Must be `"other"` (reserved for future standards) |
 | `tags` | List of lowercase strings; first tag must be the domain (`neuroscience`, `ecology`, `brain`, etc.) |
 | `authors` | List of strings |
-| `bsim.entrypoint` | Format `src.<snake_case_module>:<PascalCaseClass>` — must be importable and callable |
+| `biosim.entrypoint` | Format `src.<snake_case_module>:<PascalCaseClass>` — must be importable and callable |
 
 **REQUIRED** — if the model has external dependencies:
 
@@ -115,14 +115,14 @@ specifiers are allowed. This is enforced by CI (`scripts/validate_manifests.py`)
    ```python
    from typing import TYPE_CHECKING
    if TYPE_CHECKING:
-       from bsim import BioWorld
+       from biosim import BioWorld
    ```
 
 ---
 
 ### BioModule Interface Contract
 
-Every model class **must** inherit from `bsim.BioModule` and implement the
+Every model class **must** inherit from `biosim.BioModule` and implement the
 following interface:
 
 #### Required Methods
@@ -153,7 +153,7 @@ following interface:
 All outputs must be `BioSignal` instances:
 
 ```python
-from bsim.signals import BioSignal, SignalMetadata
+from biosim.signals import BioSignal, SignalMetadata
 
 BioSignal(
     source=<module_alias>,     # Use getattr(self, "_world_name", self.__class__.__name__)
@@ -263,7 +263,7 @@ Verify `set_inputs` processes signals correctly:
 
 ```python
 def test_set_inputs():
-    from bsim.signals import BioSignal
+    from biosim.signals import BioSignal
     module = MyModule(min_dt=0.1)
     module.set_inputs({
         "input_name": BioSignal(source="test", name="input_name", value=1.0, time=0.1)
@@ -535,7 +535,7 @@ wiring:
 Rules:
 - Every model alias in `space.yaml` must have a corresponding entry in
   `wiring.yaml`.
-- `class` must match the `bsim.entrypoint` from the model's `model.yaml`.
+- `class` must match the `biosim.entrypoint` from the model's `model.yaml`.
 - `args` must be consistent with `parameters` in `space.yaml` (same keys, same
   values).
 
@@ -557,14 +557,14 @@ Demonstrates:
 - <bullet point 2>
 
 Run:
-    pip install "bsim @ git+https://github.com/BioSimulant/bsim.git@<ref>"
+    pip install "biosim @ git+https://github.com/BioSimulant/biosim.git@<ref>"
     python spaces/<space-slug>/run_local.py
 """
 from __future__ import annotations
 
 import sys
 from pathlib import Path
-import bsim
+import biosim
 
 # Add model source directories to sys.path
 MODELS_DIR = Path(__file__).resolve().parent.parent.parent / "models"
@@ -576,9 +576,9 @@ from src.<module> import <ClassName>
 # ...
 
 def main() -> None:
-    world = bsim.BioWorld()
+    world = biosim.BioWorld()
     # Instantiate modules
-    # Wire with bsim.WiringBuilder
+    # Wire with biosim.WiringBuilder
     # Run simulation
     # Print/collect results
 
@@ -588,16 +588,16 @@ if __name__ == "__main__":
 
 Requirements:
 - Must include a docstring with run instructions.
-- Must use `bsim.WiringBuilder` for wiring (not manual signal passing).
+- Must use `biosim.WiringBuilder` for wiring (not manual signal passing).
 - Must print meaningful output (metrics, visual summaries).
-- Must be runnable with only `bsim` installed (plus model dependencies).
+- Must be runnable with only `biosim` installed (plus model dependencies).
 
 #### `simui_local.py` (RECOMMENDED for interactive spaces)
 
 Same structure as `run_local.py` but launches a SimUI web dashboard:
 
 ```python
-from bsim.simui import Interface, Number, Button, EventLog, VisualsPanel
+from biosim.simui import Interface, Number, Button, EventLog, VisualsPanel
 
 ui = Interface(
     world,
@@ -612,7 +612,7 @@ ui.launch(host="127.0.0.1", port=8765, open_browser=True)
 Requirements:
 - Must include `--port` and `--duration` CLI arguments via `argparse`.
 - Must include a multi-line markdown description explaining what to observe.
-- Must gracefully handle missing `bsim[ui]` dependency with a clear error message.
+- Must gracefully handle missing `biosim[ui]` dependency with a clear error message.
 
 ---
 
@@ -683,10 +683,10 @@ Use this checklist before submitting a new model or space.
       - Native/handcrafted: `models/<domain>-<subject>-<role>/`
       - Public-catalog faithful (has `upstream:` in `model.yaml`): `models/<domain>-<format>-<subject>-<catalog_token>-<role>/`
 - [ ] `model.yaml` contains all required fields (`schema_version`, `title`,
-      `description`, `standard`, `tags`, `authors`, `bsim.entrypoint`)
+      `description`, `standard`, `tags`, `authors`, `biosim.entrypoint`)
 - [ ] `src/<module>.py` exists with SPDX header, module docstring, and
       `from __future__ import annotations`
-- [ ] Class inherits from `bsim.BioModule`
+- [ ] Class inherits from `biosim.BioModule`
 - [ ] `__init__` accepts `min_dt` as the last parameter with a sensible default
 - [ ] `__init__` sets `self.min_dt`
 - [ ] `inputs()` returns `Set[str]`

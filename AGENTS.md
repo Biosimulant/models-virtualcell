@@ -4,7 +4,7 @@ Instructions for AI agents working in the models repository.
 
 ## Repository Purpose
 
-This is a **public** curated monorepo of biological simulation model packs and composed simulation spaces for the [bsim](https://github.com/BioSimulant/bsim) platform. It provides reusable, composable biomodules across neuroscience, ecology, and cellular domains.
+This is a **public** curated monorepo of biological simulation model packs and composed simulation spaces for the [biosim](https://github.com/BioSimulant/biosim) platform. It provides reusable, composable biomodules across neuroscience, ecology, and cellular domains.
 
 ## Repository Structure
 
@@ -23,7 +23,7 @@ models/
 
 - **Model Pack**: A self-contained simulation component with a `model.yaml` manifest, optional Python source, and dependencies. Each model defines inputs, outputs, and an `advance_to(t)` method.
 - **Space**: A composed simulation defined by `space.yaml` that wires multiple models together with signal routing, runtime parameters, and initial conditions.
-- **BioModule**: The base class (`bsim.BioModule`) that all custom models inherit from. It defines the `inputs()`, `outputs()`, `set_inputs()`, `advance_to()`, and `get_outputs()` interface.
+- **BioModule**: The base class (`biosim.BioModule`) that all custom models inherit from. It defines the `inputs()`, `outputs()`, `set_inputs()`, `advance_to()`, and `get_outputs()` interface.
 - **Wiring**: YAML declarations in `space.yaml` that route signals from one model's output to another model's input (`from: module.output → to: module.input`).
 
 ## Manifest Schemas
@@ -34,8 +34,8 @@ Required fields:
 - `schema_version`: Must be `"2.0"`
 - `title`, `description`: Human-readable metadata
 - `standard`: Model standard (e.g., `"other"`)
-- `bsim.entrypoint`: Python import path in `module.path:ClassName` or `module.path:function_name` format
-- `bsim.init_kwargs`: Parameters passed to the model constructor
+- `biosim.entrypoint`: Python import path in `module.path:ClassName` or `module.path:function_name` format
+- `biosim.init_kwargs`: Parameters passed to the model constructor
 - `runtime.dependencies.packages`: All dependencies must be pinned with `==`
 
 ### space.yaml (Version 2.0)
@@ -55,7 +55,7 @@ All new models and spaces must satisfy the acceptance criteria in [STANDARDS.md]
 
 1. Copy `templates/model-pack/` to `models/<your-model-slug>/`
 2. Edit `model.yaml` with your model's metadata, entrypoint, and dependencies
-3. Implement your module by subclassing `bsim.BioModule`
+3. Implement your module by subclassing `biosim.BioModule`
 4. Add tests in `tests/test_<module>.py` (see [STANDARDS.md § Tests](STANDARDS.md#tests))
 5. Ensure all dependencies use exact version pinning (`==`)
 6. Run validation: `python scripts/validate_manifests.py && python scripts/check_entrypoints.py`
@@ -103,7 +103,7 @@ Full conventions, interface contracts, and acceptance checklists are in [STANDAR
 
 - All YAML manifests use `schema_version: "2.0"`
 - Python dependencies must be pinned with exact versions (`==`)
-- Custom Python modules follow the `bsim.BioModule` interface contract
+- Custom Python modules follow the `biosim.BioModule` interface contract
 - Model slugs use kebab-case with domain prefix (e.g., `neuro-`, `ecology-`, `virtualcell-`)
 - Every model must include unit tests in `tests/test_<module>.py`
 - Pre-commit hooks enforce trailing whitespace, EOF newlines, YAML syntax, and secret detection
@@ -119,6 +119,6 @@ Full conventions, interface contracts, and acceptance checklists are in [STANDAR
 ## Dependencies
 
 - **Python 3.11+** required
-- **bsim**: Core framework, installed from `git+https://github.com/BioSimulant/bsim.git@main`
+- **biosim**: Core framework, installed from `git+https://github.com/BioSimulant/biosim.git@main`
 - **pyyaml**: For manifest parsing in validation scripts
 - Model-specific dependencies are declared per-model in `model.yaml`

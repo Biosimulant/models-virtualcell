@@ -4,7 +4,7 @@ description: "Arc Institute State Transition ML model predicting transcriptional
 standard: other
 tags: [virtual-cell, gene-regulation, transcriptomics, arc-institute, ml]
 authors: ["Biosimulant Team"]
-bsim:
+biosim:
   entrypoint: "src.virtual_cell:VirtualCell"
 runtime:
   dependencies:

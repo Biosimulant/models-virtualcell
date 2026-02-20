@@ -41,7 +41,7 @@ def test_counter_visualize():
 
 def test_accumulator_accumulates():
     from my_pack import Accumulator
-    from bsim import BioSignal
+    from biosim import BioSignal
 
     acc = Accumulator(initial=10.0, min_dt=0.1)
     acc.set_inputs({"value": BioSignal(source="src", name="value", value=5.0, time=0.1)})

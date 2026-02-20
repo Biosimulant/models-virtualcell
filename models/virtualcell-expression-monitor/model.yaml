@@ -4,5 +4,5 @@ description: "Monitors and visualizes gene expression profiles as bar charts and
 standard: other
 tags: [virtual-cell, monitor, visualization]
 authors: ["Biosimulant Team"]
-bsim:
+biosim:
   entrypoint: "src.expression_monitor:ExpressionMonitor"

@@ -1,6 +1,6 @@
-# bsim-my-pack
+# biosim-my-pack
 
-A template for creating custom bsim module packs.
+A template for creating custom biosim module packs.
 
 ## Installation
 
@@ -9,7 +9,7 @@ A template for creating custom bsim module packs.
 pip install -e .
 
 # Or install from PyPI (after publishing)
-pip install bsim-my-pack
+pip install biosim-my-pack
 ```
 
 ## Usage
@@ -17,10 +17,10 @@ pip install bsim-my-pack
 ### In Python
 
 ```python
-import bsim
+import biosim
 from my_pack import Counter
 
-world = bsim.BioWorld()
+world = biosim.BioWorld()
 world.add_biomodule("counter", Counter(name="my_counter", min_dt=0.1))
 world.run(duration=10.0, tick_dt=0.1)
 ```
@@ -38,7 +38,7 @@ modules:
 
 Run with:
 ```bash
-python -m bsim config.yaml --simui
+python -m biosim config.yaml --simui
 ```
 
 ## Included Components

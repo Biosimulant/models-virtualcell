@@ -4,5 +4,5 @@ description: "Emits gene perturbation signals (knockout, overexpression, drug) o
 standard: other
 tags: [virtual-cell, perturbation, input]
 authors: ["Biosimulant Team"]
-bsim:
+biosim:
   entrypoint: "src.perturbation_source:PerturbationSource"

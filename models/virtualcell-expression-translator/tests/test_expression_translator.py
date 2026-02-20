@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 
-def test_instantiation(bsim):
+def test_instantiation(biosim):
     from src.expression_translator import ExpressionTranslator
 
     module = ExpressionTranslator()
@@ -12,7 +12,7 @@ def test_instantiation(bsim):
     assert len(module.outputs()) > 0
 
 
-def test_advance_produces_outputs(bsim):
+def test_advance_produces_outputs(biosim):
     from src.expression_translator import ExpressionTranslator
 
     module = ExpressionTranslator(min_dt=0.01)
@@ -25,7 +25,7 @@ def test_advance_produces_outputs(bsim):
         assert signal.time == 0.01
 
 
-def test_output_keys_match(bsim):
+def test_output_keys_match(biosim):
     from src.expression_translator import ExpressionTranslator
 
     module = ExpressionTranslator(min_dt=0.01)
@@ -33,9 +33,9 @@ def test_output_keys_match(bsim):
     assert set(module.get_outputs().keys()) == module.outputs()
 
 
-def test_reset(bsim):
+def test_reset(biosim):
     from src.expression_translator import ExpressionTranslator
-    from bsim.signals import BioSignal
+    from biosim.signals import BioSignal
 
     module = ExpressionTranslator(base_current=5.0, min_dt=0.01)
 
@@ -60,7 +60,7 @@ def test_reset(bsim):
     assert current == 5.0
 
 
-def test_baseline_current_with_no_expression(bsim):
+def test_baseline_current_with_no_expression(biosim):
     """Without expression data, output should be base_current."""
     from src.expression_translator import ExpressionTranslator
 
@@ -70,9 +70,9 @@ def test_baseline_current_with_no_expression(bsim):
     assert current == 10.0
 
 
-def test_set_inputs_processes_expression(bsim):
+def test_set_inputs_processes_expression(biosim):
     from src.expression_translator import ExpressionTranslator
-    from bsim.signals import BioSignal
+    from biosim.signals import BioSignal
 
     module = ExpressionTranslator(base_current=5.0, min_dt=0.01)
 
@@ -95,10 +95,10 @@ def test_set_inputs_processes_expression(bsim):
     assert abs(current - 8.0) < 0.01, f"Expected ~8.0, got {current}"
 
 
-def test_knockout_reduces_current(bsim):
+def test_knockout_reduces_current(biosim):
     """SCN1A knockout (fc=0) should reduce excitatory current."""
     from src.expression_translator import ExpressionTranslator
-    from bsim.signals import BioSignal
+    from biosim.signals import BioSignal
 
     module = ExpressionTranslator(base_current=5.0, min_dt=0.01)
 
@@ -119,10 +119,10 @@ def test_knockout_reduces_current(bsim):
     assert abs(current - 2.0) < 0.01, f"Expected ~2.0, got {current}"
 
 
-def test_kcna1_knockout_increases_current(bsim):
+def test_kcna1_knockout_increases_current(biosim):
     """KCNA1 knockout (fc=0) should increase current (less K+ repolarization)."""
     from src.expression_translator import ExpressionTranslator
-    from bsim.signals import BioSignal
+    from biosim.signals import BioSignal
 
     module = ExpressionTranslator(base_current=5.0, min_dt=0.01)
 
@@ -143,10 +143,10 @@ def test_kcna1_knockout_increases_current(bsim):
     assert abs(current - 7.5) < 0.01, f"Expected ~7.5, got {current}"
 
 
-def test_current_clamped(bsim):
+def test_current_clamped(biosim):
     """Output should be clamped within [clamp_min, clamp_max]."""
     from src.expression_translator import ExpressionTranslator
-    from bsim.signals import BioSignal
+    from biosim.signals import BioSignal
 
     module = ExpressionTranslator(
         base_current=5.0, clamp_min=-10.0, clamp_max=15.0, min_dt=0.01,
@@ -169,10 +169,10 @@ def test_current_clamped(bsim):
     assert current <= 15.0, f"Current {current} exceeds clamp_max"
 
 
-def test_custom_gene_mappings(bsim):
+def test_custom_gene_mappings(biosim):
     """Custom gene mappings should override defaults."""
     from src.expression_translator import ExpressionTranslator
-    from bsim.signals import BioSignal
+    from biosim.signals import BioSignal
 
     module = ExpressionTranslator(
         base_current=0.0,
@@ -194,14 +194,14 @@ def test_custom_gene_mappings(bsim):
     assert abs(current - 10.0) < 0.01
 
 
-def test_visualize_none_before_advance(bsim):
+def test_visualize_none_before_advance(biosim):
     from src.expression_translator import ExpressionTranslator
 
     module = ExpressionTranslator(min_dt=0.01)
     assert module.visualize() is None
 
 
-def test_visualize_after_advance(bsim):
+def test_visualize_after_advance(biosim):
     from src.expression_translator import ExpressionTranslator
 
     module = ExpressionTranslator(min_dt=0.01)

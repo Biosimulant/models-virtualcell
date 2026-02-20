@@ -4,5 +4,5 @@ description: "Classical gene regulatory network predicting transcriptional respo
 standard: other
 tags: [virtual-cell, gene-regulation, transcriptomics, grn]
 authors: ["Biosimulant Team"]
-bsim:
+biosim:
   entrypoint: "src.virtual_cell:VirtualCell"

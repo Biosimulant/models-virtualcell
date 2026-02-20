@@ -4,5 +4,5 @@ description: "Translates gene expression fold-changes into biophysical current s
 standard: other
 tags: [virtual-cell, bridge, neuroscience]
 authors: ["Biosimulant Team"]
-bsim:
+biosim:
   entrypoint: "src.expression_translator:ExpressionTranslator"
