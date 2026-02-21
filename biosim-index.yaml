@@ -1,0 +1,7 @@
+models:
+- models/virtualcell-arc-state-predictor/model.yaml
+- models/virtualcell-expression-monitor/model.yaml
+- models/virtualcell-expression-translator/model.yaml
+- models/virtualcell-grn-predictor/model.yaml
+- models/virtualcell-perturbation-source/model.yaml
+spaces: []
