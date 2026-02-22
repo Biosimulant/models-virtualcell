@@ -1,6 +1,6 @@
 schema_version: "2.0"
 title: "VirtualCell: ArcStatePredictor"
-description: "Arc Institute State Transition ML model predicting transcriptional responses to perturbations."
+description: "Arc Institute State Transition ML model predicting transcriptional responses to perturbations. It can be used to explore virtualcell arc state predictor dynamics and compare simulation behavior across conditions."
 standard: other
 tags: [virtual-cell, gene-regulation, transcriptomics, arc-institute, ml]
 authors: ["Biosimulant Team"]

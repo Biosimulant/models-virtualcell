@@ -1,6 +1,6 @@
 schema_version: "2.0"
 title: "VirtualCell: GrnPredictor"
-description: "Classical gene regulatory network predicting transcriptional responses to perturbations via coupled ODEs."
+description: "Classical gene regulatory network predicting transcriptional responses to perturbations via coupled ODEs. It can be used to explore virtualcell grn predictor dynamics and compare simulation behavior across conditions."
 standard: other
 tags: [virtual-cell, gene-regulation, transcriptomics, grn]
 authors: ["Biosimulant Team"]

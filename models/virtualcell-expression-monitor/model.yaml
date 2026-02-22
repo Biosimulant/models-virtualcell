@@ -1,6 +1,6 @@
 schema_version: "2.0"
 title: "VirtualCell: ExpressionMonitor"
-description: "Monitors and visualizes gene expression profiles as bar charts and timeseries."
+description: "Monitors and visualizes gene expression profiles as bar charts and timeseries. It can be used to explore virtualcell expression monitor dynamics and compare simulation behavior across conditions."
 standard: other
 tags: [virtual-cell, monitor, visualization]
 authors: ["Biosimulant Team"]
