@@ -41,8 +41,8 @@ DEFAULT_GENE_NAMES: List[str] = [
     "GRIA2",   # GluA2 AMPA receptor subunit
     "GRIN1",   # NMDA receptor subunit NR1
     "GRIN2A",  # NMDA receptor subunit NR2A
-    "GAD1",    # GAD67 — GABA synthesis enzyme
-    "GAD2",    # GAD65 — GABA synthesis enzyme
+    "GAD1",    # GAD67 - GABA synthesis enzyme
+    "GAD2",    # GAD65 - GABA synthesis enzyme
     "SLC6A1",  # GAT-1 GABA transporter
     "BDNF",    # Brain-derived neurotrophic factor
     "NTRK2",   # TrkB receptor (BDNF receptor)

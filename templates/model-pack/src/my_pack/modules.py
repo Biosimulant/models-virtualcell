@@ -14,6 +14,10 @@ from typing import Any, Dict, List, Optional, Set
 from biosim import BioModule
 from biosim.signals import BioSignal, SignalMetadata
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 class Counter(BioModule):
     """Counts simulation steps and emits the count.
@@ -107,7 +111,7 @@ class Accumulator(BioModule):
             return
         try:
             self._total += float(signal.value)
-        except Exception:
+        except (KeyError, ValueError, TypeError):  # narrowed from bare Exception
             pass
 
     def advance_to(self, t: float) -> None:

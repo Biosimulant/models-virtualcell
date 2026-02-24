@@ -4,7 +4,7 @@
 """Arc Institute State Transition ML predictor.
 
 Predicts how gene expression changes in response to perturbations using the
-Arc Institute's State Transition model — a GPT-2-based transformer trained
+Arc Institute's State Transition model - a GPT-2-based transformer trained
 on 270M+ single-cell transcriptomic profiles.
 
 The model is loaded from a HuggingFace checkpoint (e.g.
@@ -45,8 +45,8 @@ DEFAULT_GENE_NAMES: List[str] = [
     "GRIA2",   # GluA2 AMPA receptor subunit
     "GRIN1",   # NMDA receptor subunit NR1
     "GRIN2A",  # NMDA receptor subunit NR2A
-    "GAD1",    # GAD67 — GABA synthesis enzyme
-    "GAD2",    # GAD65 — GABA synthesis enzyme
+    "GAD1",    # GAD67 - GABA synthesis enzyme
+    "GAD2",    # GAD65 - GABA synthesis enzyme
     "SLC6A1",  # GAT-1 GABA transporter
     "BDNF",    # Brain-derived neurotrophic factor
     "NTRK2",   # TrkB receptor (BDNF receptor)
@@ -330,7 +330,7 @@ class VirtualCell(BioModule):
         """Construct a minimal AnnData from the default gene set.
 
         Enables Arc inference without a real scRNA-seq dataset.
-        Results are approximate — provide a real ``.h5ad`` via
+        Results are approximate - provide a real ``.h5ad`` via
         ``baseline_adata_path`` for production use.
         """
         import anndata as ad

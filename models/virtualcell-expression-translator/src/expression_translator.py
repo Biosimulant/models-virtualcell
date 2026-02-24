@@ -81,7 +81,7 @@ class ExpressionTranslator(BioModule):
         min_dt: Minimum time step.
 
     Emits:
-        current: float — total biophysical current for neuron models
+        current: float - total biophysical current for neuron models
     """
 
     def __init__(
