@@ -57,7 +57,7 @@ models/<domain>-<subject>-<role>/
 
 ```yaml
 schema_version: "2.0"
-title: "<Domain>: <ComponentName>"      # e.g. "Neuro: SpikeMonitor"
+title: "<Readable Model Title>"         # e.g. "SEIRS model of COVID-19 transmission"
 description: "<One-line feature description>"
 standard: other
 tags: [<domain>, <subdomain>, ...]      # At least one domain tag
@@ -69,7 +69,7 @@ biosim:
 | Field | Rule |
 |-------|------|
 | `schema_version` | Must be `"2.0"` |
-| `title` | Format: `"<Domain>: <PascalCaseName>"` |
+| `title` | Readable source/publication title; no domain prefix or PascalCase |
 | `description` | Single sentence, starts with a verb or noun |
 | `standard` | Must be `"other"` (reserved for future standards) |
 | `tags` | List of lowercase strings; first tag must be the domain (`neuroscience`, `ecology`, `brain`, etc.) |
@@ -315,7 +315,7 @@ pytest models/models/
 | Element | Pattern | Example |
 |---------|---------|---------|
 | Model directory (slug) | Native/handcrafted: `<domain>-<subject>-<role>`; Public-catalog faithful: `<science_domain>-<format>-<subject>-<catalog_token>-<role>` (kebab-case) | `neuro-hodgkin-huxley-population`; `epidemiology-sbml-ghanbari2020-second-wave-covid-iran-biomd0000000976-model` |
-| Manifest title | `"<Domain>: <PascalCaseName>"` | `"Neuro: HodgkinHuxleyPopulation"` |
+| Manifest title | Readable source/publication title | `"Hodgkin-Huxley population model"` |
 | Python module file | `<snake_case>.py` | `hodgkin_huxley_population.py` |
 | Python class name | `PascalCase` | `HodgkinHuxleyPopulation` |
 | Tags | lowercase, no spaces | `neuroscience`, `monitor`, `ecology` |
