@@ -482,9 +482,8 @@ schema_version: "2.0"
 title: "<Domain>: <Scenario Name>"
 description: "<One-line description of what this space demonstrates>"
 models:
-  - repo: Biosimulant/models
+  - path: ../models/<model-slug>
     alias: <unique_alias>
-    manifest_path: models/<model-slug>/model.yaml
     parameters:
       <key>: <value>
 runtime:
@@ -502,17 +501,16 @@ wiring:
 | `title` | Format: `"<Domain>: <Descriptive Name>"` |
 | `description` | Single sentence describing the scenario |
 | `models` | Non-empty list of model references |
-| `models[].repo` | Repository identifier (e.g., `Biosimulant/models`) |
+| `models[].path` | Relative path to a local model directory |
 | `models[].alias` | Unique short name for this model instance within the space |
-| `models[].manifest_path` | Path to the model's `model.yaml` relative to repo root |
+| `models[].package` / `models[].version` | Immutable published model reference |
 | `models[].parameters` | Dict of constructor kwargs overriding model defaults |
 | `runtime.duration` | Positive float — total simulation time |
 | `runtime.tick_dt` | Positive float — must be ≤ the smallest `min_dt` among all models |
 | `wiring` | List of `{from, to}` signal routes |
 
 **Validation rules**:
-- When the same `repo` appears multiple times, every entry **must** include
-  `manifest_path` to disambiguate.
+- Every model entry must use either a relative `path` or an immutable `package` + `version` pair.
 - All `from` and `to` references must use the format `<alias>.<signal_name>`.
 - Signal names in wiring must match the `inputs()` and `outputs()` declared by
   the referenced models.
@@ -714,7 +712,7 @@ Use this checklist before submitting a new model or space.
 - [ ] Directory follows `spaces/<domain>-<scenario>/` structure
 - [ ] `space.yaml` contains all required fields (`schema_version`, `title`,
       `description`, `models`, `runtime`, `wiring`)
-- [ ] Every model entry has `repo`, `alias`, and `manifest_path`
+- [ ] Every model entry has `alias` plus either `path` or `package` + `version`
 - [ ] All model aliases are unique within the space
 - [ ] `runtime.tick_dt` ≤ smallest `min_dt` of any model in the space
 - [ ] All `wiring` entries use valid `<alias>.<signal>` references

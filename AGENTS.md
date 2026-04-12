@@ -43,7 +43,7 @@ Required fields:
 Required fields:
 - `schema_version`: Must be `"2.0"`
 - `title`, `description`: Human-readable metadata
-- `models`: List of model references with `repo`, `alias`, `manifest_path`, and optional `parameters`
+- `models`: List of model references with `alias`, plus either local `path` or published `package` + `version`, and optional `parameters`
 - `runtime.duration`, `runtime.tick_dt`: Simulation time parameters
 - `wiring`: Signal routing between model aliases
 
@@ -71,7 +71,7 @@ See [STANDARDS.md § Space Standards](STANDARDS.md#space-standards) for full req
 
 1. Create `spaces/<your-space-slug>/space.yaml`
 2. Add `wiring.yaml` with local-equivalent module classes and args
-3. Reference models by `manifest_path` relative to the repo root
+3. Reference models by relative `path` entries or immutable `package` + `version` pairs
 4. Define wiring to connect model outputs to inputs
 5. Set `runtime.duration` and `runtime.tick_dt`
 6. Add `run_local.py` for CLI testing (recommended)

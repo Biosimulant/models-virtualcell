@@ -4,9 +4,8 @@ Generated from monolithic models repo split.
 
 - Domain: virtualcell
 - Model count: 5
-- Source: /Volumes/dem-ssd/imp/projects/Nitoons/Biosimulant/models
+- Source: monolithic `models` repository
 
 Layout:
 - models/<slug>/model.yaml
 - scripts/, templates/, docs/, .github/
-
