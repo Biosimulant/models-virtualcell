@@ -1,0 +1,13 @@
+schema_version: "2.0"
+package: virtualcell-expression-monitor
+version: 1.0.0
+title: "Expression Monitor Lab"
+description: "Single-model lab wrapper for Expression Monitor. Monitors and visualizes gene expression profiles as bar charts and timeseries. It can be used to explore virtualcell expression monitor dynamics and compare simulation behavior across conditions."
+models:
+  - alias: "virtualcell_expression_monitor"
+    path: "./model"
+wiring: []
+runtime:
+  duration: 0.01
+  communication_step: 0.01
+  initial_inputs: {}

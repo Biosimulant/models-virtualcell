@@ -1,0 +1,13 @@
+schema_version: "2.0"
+package: virtualcell-arc-state-predictor
+version: 1.0.0
+title: "Arc State Predictor Lab"
+description: "Single-model lab wrapper for Arc State Predictor. Arc Institute State Transition ML model predicting transcriptional responses to perturbations. It can be used to explore virtualcell arc state predictor dynamics and compare simulation behavior across conditions."
+models:
+  - alias: "virtualcell_arc_state_predictor"
+    path: "./model"
+wiring: []
+runtime:
+  duration: 0.01
+  communication_step: 0.01
+  initial_inputs: {}

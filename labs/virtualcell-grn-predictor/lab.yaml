@@ -1,0 +1,13 @@
+schema_version: "2.0"
+package: virtualcell-grn-predictor
+version: 1.0.0
+title: "Grn Predictor Lab"
+description: "Single-model lab wrapper for Grn Predictor. Classical gene regulatory network predicting transcriptional responses to perturbations via coupled ODEs. It can be used to explore virtualcell grn predictor dynamics and compare simulation behavior across conditions."
+models:
+  - alias: "virtualcell_grn_predictor"
+    path: "./model"
+wiring: []
+runtime:
+  duration: 0.01
+  communication_step: 0.01
+  initial_inputs: {}

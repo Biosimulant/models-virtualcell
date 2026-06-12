@@ -1,0 +1,13 @@
+schema_version: "2.0"
+package: virtualcell-expression-translator
+version: 1.0.0
+title: "Expression Translator Lab"
+description: "Single-model lab wrapper for Expression Translator. Translates gene expression fold-changes into biophysical current signals for neuron models. It can be used to explore virtualcell expression translator dynamics and compare simulation behavior across conditions."
+models:
+  - alias: "virtualcell_expression_translator"
+    path: "./model"
+wiring: []
+runtime:
+  duration: 0.01
+  communication_step: 0.01
+  initial_inputs: {}
